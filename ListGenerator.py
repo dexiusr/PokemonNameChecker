@@ -7,6 +7,8 @@ URL = "https://en.wikipedia.org/wiki/List_of_Pok%C3%A9mon"
 content = urllib.request.urlopen(URL).read()
 soup = BeautifulSoup(content, "lxml")
 
+finalPokemonNumber = 809 #Only want pokemonNumber <= 809 because I haven't played the games where pokemon number 810 onwards came out
+
 # Want to be able to extract the pokemon number from the string of the format "###: name"
 def pokemonNumber(elem):
     if str(elem[0]).isdigit() and str(elem[3]) == ":":
@@ -50,7 +52,7 @@ for row in pokemonTable.findAll("tr"):
 
 for x in fullPokemonList:
     y = fixvalues(x)
-    if pokemonNumber(y) <= 809: #Only want pokemonNumber <= 809 because I haven't played the games where pokemon number 810 onwards came out
+    if pokemonNumber(y) <= finalPokemonNumber:
         outputFile.write(y[5:]+"\n") #Extracts the name from "###: name"
 
 outputFile.close()
