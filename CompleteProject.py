@@ -81,15 +81,12 @@ for pokemon in filteredPokemonList:
 
 ## So the website doesnt block me out
     time.sleep(1.5)
-
-outputFile = open(r"/Users/dexiusram/Desktop/Programs/Webtests/userlist.txt", "w")
-
-
+    
 def secondCharacter(i):
     return(int(i[1]));
 
 usernameList.sort(key=secondCharacter)
 for x in range(0, len(usernameList)):
-    outputFile.write("{}\n".format(usernameList[x][0]))
+   print(usernameList[x][0]))
 d.quit()
-outputFile.close()
+
